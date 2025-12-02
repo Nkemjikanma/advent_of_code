@@ -9,7 +9,7 @@ pub fn get_password() {
     let mut current_position: u32 = 50;
     let mut password: u32 = 0;
 
-    if let Ok(lines) = read_lines("rotations.txt") {
+    if let Ok(lines) = read_lines("day_1_rotations.txt") {
         for line in lines.map_while(Result::ok) {
             // println!("{}", line);
 
