@@ -36,9 +36,11 @@ pub fn get_accessible_rolls() {
             valid_rolls_to_remove.clear();
         }
 
+        valid_paper_per_loop = false;
+
         for row_idx in 0..grid.len() {
             'griditem: for col_idx in 0..grid[row_idx].len() {
-                if grid[row_idx][col_idx] == '.' {
+                if grid[row_idx][col_idx] != '@' {
                     continue 'griditem;
                 }
                 let mut eight_adjacent_rows_sum = 0;
@@ -79,12 +81,11 @@ pub fn get_accessible_rolls() {
                     continue;
                 }
             }
-
-            if valid_rolls_to_remove.is_empty() {
-                valid_paper_per_loop = false;
-            }
         }
 
+        if !valid_rolls_to_remove.is_empty() {
+            valid_paper_per_loop = true;
+        }
         if !valid_paper_per_loop {
             break;
         }
